@@ -59,7 +59,7 @@ public class ArcaneGambit {
      * @param defenderCard The defending card. (Card Object)
      * @return int between -1 and 1 depending on the type advantage.
      */
-    private static int checkTypeAdvantage(Card attackerCard, Card defenderCard) {
+    private static int calculateTypeAdvantage(Card attackerCard, Card defenderCard) {
 
         String attackerNature = attackerCard.getCardNature();
         String defenderNature = defenderCard.getCardNature();
@@ -94,7 +94,36 @@ public class ArcaneGambit {
         return 0;
     }
 
+    /**
+     *
+     * @param attackerCard
+     * @param defenderCard
+     * @return
+     */
+    private static double calculateAttackChance(Card attackerCard, Card defenderCard) {
 
+        int attackerPower = attackerCard.getCardPower();
+        int defenderPower = defenderCard.getCardPower();
+        int typeAdvantage = calculateTypeAdvantage(attackerCard, defenderCard);
+
+        // TODO: Add proper calculation for
+        switch (typeAdvantage) {
+            case 1:
+                if (attackerPower > defenderPower) {
+                    return 1.0;
+                } else {
+                    return 0.6;
+                }
+            case 0:
+                return 0;
+            case -1:
+                return 0;
+        }
+
+
+        return 0;
+
+    }
 
     /**
      * Validates user input.
