@@ -22,7 +22,6 @@ public class Deck {
         this.handMaxSize = handMaxSize;
         this.deckSize = 200;
 
-
         for (int i = 0; i < handMaxSize; i++) {
             // Try to draw card
             try {
@@ -71,9 +70,9 @@ public class Deck {
             // check if index is null, continue if it is not
             if (!(ArcaneGambit.playableDeck[randomIndex] == null)) {
                 Card card = new Card(
-                        ArcaneGambit.playableDeck[randomIndex][0], // name of card
-                        ArcaneGambit.playableDeck[randomIndex][1], // nature of card
-                        Integer.parseInt(ArcaneGambit.playableDeck[randomIndex][2]) // parse string to integer for power level
+                    ArcaneGambit.playableDeck[randomIndex][0], // name of card
+                    ArcaneGambit.playableDeck[randomIndex][1], // nature of card
+                    Integer.parseInt(ArcaneGambit.playableDeck[randomIndex][2]) // parse string to integer for power level
                 );
                 // remove card from deck
                 ArcaneGambit.playableDeck[randomIndex] = null;
