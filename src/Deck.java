@@ -15,6 +15,7 @@ public class Deck {
 
     private int handMaxSize = 5;
     private int deckSize = 200;
+    public int durability = 100;
 
     ArrayList<Card> hand = new ArrayList<>();
 

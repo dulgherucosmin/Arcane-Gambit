@@ -24,12 +24,23 @@ public class ArcaneGambit {
     private static int deckMaxSize = 7;
     private static String difficulty = "normal";
 
+    private static Boolean doGameLoop = true;
+
     public static void startGame() {
 
         Deck playerDeck = new Deck(5);
+        Deck computerDeck = new Deck(5);
 
         Scanner sc = new Scanner(System.in);
 
+        // Main gameplay loop
+        while (doGameLoop) {
+            
+
+
+        }
+
+        /*
         while (true) {
             playerDeck.showHand();
             System.out.println("Please pick a card to play");
@@ -42,6 +53,7 @@ public class ArcaneGambit {
                 playerDeck.playCard(input);
             }
         }
+        */
 
         sc.close();
     }
@@ -144,6 +156,16 @@ public class ArcaneGambit {
             sc.next(); // reset input
             return getValidChoice(); // recall method
         }
+    }
+
+    private static void updateGameLoop(Deck playerDeck, Deck computerDeck) {
+
+        if (playerDeck.durability <= 0) {
+            doGameLoop = false; // set game loop to false if player deck has died
+        } else if (computerDeck.durability <= 0) {
+            doGameLoop = false; //
+        }
+
     }
 
 }
