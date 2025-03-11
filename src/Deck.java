@@ -18,6 +18,8 @@ public class Deck {
     public int durability = 100;
     public int maxDurability = 100;
 
+    public Card lastCard;
+
     ArrayList<Card> hand = new ArrayList<>();
 
     public Deck(int handMaxSize) {
@@ -37,10 +39,8 @@ public class Deck {
     public void playCard(int cardSlot) {
 
         Card card = hand.get(cardSlot-1);
+        lastCard = card; // set last card to the last played card
         hand.remove(cardSlot-1);
-        System.out.println("Played card" + cardSlot);
-        System.out.println(card.toString());
-        System.out.println("Card Above ^^^^");
         try {
             drawCard();
         } catch (Exception e) {
@@ -51,9 +51,11 @@ public class Deck {
 
     public void showHand() {
 
-        for (Card card : hand) {
-            card.displayCard();
-        }
+        int slot = 1;
+        for (Card card: hand) {
+            System.out.println(MAIN + "[Slot " + slot + "] " + card.toString());
+            slot++; // increment slot count
+        } 
 
     }
 
