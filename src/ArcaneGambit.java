@@ -25,20 +25,31 @@ public class ArcaneGambit {
     private static String difficulty = "normal";
 
     private static Boolean doGameLoop = true;
+    private static int gameTick = 0;
 
     public static void startGame() {
 
-        Deck playerDeck = new Deck(5);
-        Deck computerDeck = new Deck(5);
+        Deck playerDeck = new Deck(7);
+        Deck computerDeck = new Deck(7);
 
         Scanner sc = new Scanner(System.in);
 
         // Main gameplay loop
         while (doGameLoop) {
             
+            try {
+                computerDeck.playCard(1);
+                playerDeck.playCard(1);
+            } catch (Exception ignore) {}
 
+            displayPlayers(playerDeck, computerDeck, "computer");
+            playerDeck.durability -= 100;
 
+            // Update game loop for deck durability
+            updateGameLoop(playerDeck, computerDeck);
         }
+
+        System.out.println("Game loop done");
 
         /*
         while (true) {
@@ -56,6 +67,34 @@ public class ArcaneGambit {
         */
 
         sc.close();
+    }
+
+    
+    /**
+     * 
+     * @param playerDeck
+     * @param computerDeck
+     * @param damageDealt
+     * @param lastAttacker
+     */
+    private static void displayPlayers(Deck playerDeck, Deck computerDeck, String attacker) {
+
+        if (attacker.equalsIgnoreCase("computer"))
+
+            System.out.println(MAIN + "--------------------------");
+            System.out.println("        TURN " + PURPLE + (gameTick+1) + MAIN + " ");
+            System.out.println(MAIN + "--------------------------");
+            System.out.println("       COMPUTER           ");
+            System.out.println(RED + "       " + computerDeck.durability + "/" + computerDeck.maxDurability + MAIN);
+            System.out.println("");
+            System.out.println("       " + computerDeck.lastCard.toString()); // TODO: center this using string length
+            System.out.println(MAIN + "--------------------------"); 
+            System.out.println("       YOU           ");
+            System.out.println(RED + "       " + playerDeck.durability + "/" + playerDeck.maxDurability + MAIN);
+            System.out.println("");
+            System.out.println(MAIN + "--------------------------");
+            playerDeck.showHand();
+
     }
 
     /**
