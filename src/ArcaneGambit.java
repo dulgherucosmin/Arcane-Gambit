@@ -46,13 +46,6 @@ public class ArcaneGambit {
         sc.close();
     }
 
-    private static void initialiseGame(String difficulty, int deckMinSize, int deckMaxSize) {
-        difficulty = difficulty.toLowerCase();
-        deckMinSize = 4;
-        deckMaxSize = 7;
-
-    }
-
     /**
      * Takes two cards and returns whether they have a type advantage.
      * @param attackerCard The attacking card. (Card Object)
@@ -107,6 +100,7 @@ public class ArcaneGambit {
         int typeAdvantage = calculateTypeAdvantage(attackerCard, defenderCard);
 
         // TODO: Add proper calculation for
+        // TODO: use D&D rules for attack change
         switch (typeAdvantage) {
             case 1:
                 if (attackerPower > defenderPower) {
