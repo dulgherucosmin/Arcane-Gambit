@@ -15,16 +15,14 @@ public class Deck {
 
     private int handMaxSize = 5;
     private int deckSize = 200;
-    private int durability = 100;
-    private int maxDurability = 100;
+    public int durability = 100;
+    public int maxDurability = 100;
 
     ArrayList<Card> hand = new ArrayList<>();
 
     public Deck(int handMaxSize) {
         this.handMaxSize = handMaxSize;
         this.deckSize = 200;
-        this.durability = 100;
-        this.maxDurability = 100;
 
         for (int i = 0; i < handMaxSize; i++) {
             // Try to draw card
@@ -34,22 +32,6 @@ public class Deck {
             } catch (Exception ignore) { }
         }
 
-    }
-
-    public int getDurability() {
-        return this.durability;
-    }
-
-    public int getMaxDurability() {
-        return this.maxDurability;
-    }
-
-    public void setDurability(int newDurability) {
-        this.durability = newDurability;
-    }
-
-    public void setMaxDurability(int newMaxDurability) {
-        this.maxDurability = newMaxDurability;
     }
 
     public void playCard(int cardSlot) {
